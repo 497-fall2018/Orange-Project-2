@@ -13,7 +13,7 @@ export const LOAD_MAIN_FAILURE = 'free_court/main/LOAD_MAIN_FAILURE';
 const INITIAL_STATE = {
     availability: {},
     error_message: "",
-    title: "Hello, blah blah",
+    title: "Courts n' Shorts",
 };
 
 //Reducers

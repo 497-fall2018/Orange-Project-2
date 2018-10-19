@@ -8,13 +8,15 @@ import React, { Component } from 'react';
 //     };
 // };
 
+import './styles.css';
+
 class GymComponent extends Component {
   render() {
     return (
       <div >
-          <h1>{this.props.title}</h1>
-          <img src={this.props.image} width="600" height="500"/>
-          <h2> {this.props.descrip} </h2>
+          <h1 class="name">{this.props.title}</h1>
+          <img src={this.props.image} width="360" height="300"/>
+          <h2 class="status"> {this.props.descrip} </h2>
       </div>
     );
   }

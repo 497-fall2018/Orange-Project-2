@@ -16,14 +16,14 @@ class MainComponent extends Component {
 
         return (
             <div>
-                <h1>
+                <h1 class="header">
                     {this.props.title}
                 </h1>
-
+                <div class="flex-container"> 
                 <GymComponent title="SPAC" image={Spac} descrip="Full"/>
                 <GymComponent title="Patten" image={Patten} descrip={patten_desc}/>
                 <GymComponent title="Blom" image={Blom} descrip={blom_desc}/>
-
+                </div>
             </div>
         );
     }
