@@ -1,28 +1,38 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { GymComponent } from '../../components/Gym';
+import _ from 'lodash';
 
 import Spac from '../../assets/SPAC.jpg';
 import Patten from '../../assets/Patten.jpg';
 import Blom from '../../assets/Blom.jpg';
 
+import {
+    load_main
+} from '../../ducks/main'
+
 import './styles.css';
 
 class MainComponent extends Component {
+    showGyms() {
+        return _.map(this.props.gyms, (item, index) => {
+            return (
+                <GymComponent title={item.title} image={item.body} descrip={item.open} key={index}/>
+            )
+        })
+    }
+    componentDidMount () {
+        this.props.load_main();
+    }
     render () {
-      var spac_desc = "Full";
-      var patten_desc = "Empty";
-      var blom_desc = "Semi-Full";
 
         return (
             <div>
-                <h1 class="header">
+                <h1 className="header">
                     {this.props.title}
                 </h1>
-                <div class="flex-container"> 
-                <GymComponent title="SPAC" image={Spac} descrip="Full"/>
-                <GymComponent title="Patten" image={Patten} descrip={patten_desc}/>
-                <GymComponent title="Blom" image={Blom} descrip={blom_desc}/>
+                <div className="flex-container"> 
+                    {this.showGyms()}
                 </div>
             </div>
         );
@@ -33,13 +43,16 @@ export { MainComponent };
 
 const mapStateToProps = (state, ownProps) => {
     const { main } = state;
-    const { title } = main;
+    const { error_message, gyms, title } = main;
     return {
       ...ownProps,
       title,
+      gyms,
+      error_message
     };
 };
 
 // imported actions go here
 export const Main = connect(mapStateToProps, {
+    load_main,
 })(MainComponent);
