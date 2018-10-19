@@ -8,7 +8,7 @@ class Root extends Component {
             <AppNavigator/>
         );
     }
-    
+
 };
 
 export default (Root);
