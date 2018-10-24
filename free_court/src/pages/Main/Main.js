@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { GymComponent } from '../../components/Gym';
+import { CalComponent } from '../../components/Calendar';
 import _ from 'lodash';
 
 import Spac from '../../assets/SPAC.jpg';
@@ -31,9 +32,10 @@ class MainComponent extends Component {
                 <h1 className="header">
                     {this.props.title}
                 </h1>
-                <div className="flex-container"> 
+                <div className="flex-container">
                     {this.showGyms()}
                 </div>
+                <CalComponent/>
             </div>
         );
     }
