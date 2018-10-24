@@ -15,9 +15,9 @@ const INITIAL_STATE = {
     error_message: "",
     title: "Courts n' Shorts",
     gyms: [{
-        title: "",
-        open: "",
-        body: {}
+        title: "SPAC",
+        open: "Full",
+        body: "hi"
     }],
 };
 
@@ -33,6 +33,11 @@ export default function reducer(state = INITIAL_STATE, action) {
         case LOAD_MAIN_FAILURE:
             return {
                 ...state,
+                gyms: [{
+                    title: "SPAC",
+                    open: "Full",
+                    body: "hi"
+                }],
                 error_message: action.payload
             }
         default:
@@ -64,6 +69,7 @@ export const load_main_success = (dispatch, response) => {
 }
 
 export const load_main_failure = (dispatch, error) => {
+    console.log("hi");
     dispatch({
         type: LOAD_MAIN_FAILURE,
         payload: error.data
