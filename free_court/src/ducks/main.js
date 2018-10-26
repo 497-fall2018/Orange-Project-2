@@ -58,7 +58,6 @@ export const load_main = () => {
 }
 
 export const load_main_success = (dispatch, response) => {
-    console.log(response.data.response);
     dispatch({
         type: LOAD_MAIN_SUCCESS,
         payload: response.data.response,
@@ -66,7 +65,6 @@ export const load_main_success = (dispatch, response) => {
 }
 
 export const load_main_failure = (dispatch, error) => {
-    console.log("hi");
     dispatch({
         type: LOAD_MAIN_FAILURE,
         payload: error.data
