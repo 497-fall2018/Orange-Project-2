@@ -10,15 +10,21 @@ class CalComponent extends Component {
   createTable = () => {
       let table = []
       // Outer loop to create parent
-      for (let i = 0; i < 3; i++) {
+      for (let i = 0; i < 9; i++) {
         let children = []
-        //Inner loop to create children
-        for (let j = 0; j < 5; j++) {
-          //children.push(<td>{`Column ${j + 1}`}</td>)
-          children.push(<td><CalendarBox/></td>)
-        }
+        //Inner loop to create children\
+        children.push(<td> {`${i +5}:00`} </td>)
+        children.push(<td style={{
+          width: "%100",
+          backgroundColor: "#313131"}}>
+        </td>)
+
+        //children.push(<td></td>)
         //Create the parent and add the children
-        table.push(<tr>{children}</tr>)
+        table.push(<tr
+          style={{
+          width: "%100"
+          }}>{children}</tr>)
       }
       return table
     }
@@ -27,7 +33,7 @@ class CalComponent extends Component {
     return (
 
       <table style={{
-        width: "550px",
+        width:"100%"
         // minWidth: "550px",
         // borderLeft: "solid",
         // borderColor: "RGBa(61, 61, 61,.3)",
