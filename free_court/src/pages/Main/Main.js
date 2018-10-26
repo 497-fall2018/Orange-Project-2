@@ -34,7 +34,7 @@ class MainComponent extends Component {
     showGyms() {
         return _.map(this.props.gyms, (item, index) => {
             return (
-                <GymComponent title={item.title} image={item.body} descrip={item.open} key={index}/>   
+                <GymComponent title={item.name} image={item.pic_url} descrip={item.open} key={index}/>   
             )
         })
     }
