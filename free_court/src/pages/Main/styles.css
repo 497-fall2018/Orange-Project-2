@@ -1,8 +1,9 @@
 .flex-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .header {
 	text-align: center;
+	flex-grow: 1,
 }

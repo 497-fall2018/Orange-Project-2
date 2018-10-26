@@ -5,6 +5,12 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+
+
+
 import './styles.css';
 
 const styles = {
@@ -21,14 +27,16 @@ class GymComponent extends Component {
     // const { classes } = props;
     return (
       <div >
-      	<Paper elevation={1}>>
-          <h1 className="name">{this.props.title}</h1>
+      	<Card elevation={1}>>
+          <Typography className="name" gutterBottom variant="h5" component="h2">
+          	{this.props.title}
+          </Typography>
           <img src={this.props.image} width="360" height="300"/>
           <h2 className="status"> {this.props.descrip} </h2>
           <Button size="small" color="primary">
           	Request Update
           </Button>
-        </Paper>
+        </Card>
       </div>
 
     );
