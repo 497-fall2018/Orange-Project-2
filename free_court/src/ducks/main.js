@@ -15,9 +15,10 @@ const INITIAL_STATE = {
     error_message: "",
     title: "Courts n' Shorts",
     gyms: [{
-        title: "",
-        open: "",
-        body: {}
+        name: "SPAC",
+        schedule: "Full",
+        phone: "hi",
+        pic_url: "",
     }],
 };
 
@@ -45,7 +46,7 @@ export default function reducer(state = INITIAL_STATE, action) {
 
 //Action Creators
 export const load_main = () => {
-    const url = `${mainAPIRoot}/v1/api/gym`;
+    const url = `${mainAPIRoot}/v1/gyms`;
     return (dispatch) => {
         dispatch({
             type: LOAD_MAIN
@@ -59,7 +60,7 @@ export const load_main = () => {
 export const load_main_success = (dispatch, response) => {
     dispatch({
         type: LOAD_MAIN_SUCCESS,
-        payload: response.data,
+        payload: response.data.response,
     });
 }
 
