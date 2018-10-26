@@ -27,8 +27,8 @@ class GymComponent extends Component {
     // const { classes } = props;
     return (
       <div >
-      	<Card elevation={1}>>
-          <Typography className="name" gutterBottom variant="h5" component="h2">
+      	<Card elevation={1} style={{backgroundColor:"#FFFCFA"}}>>
+          <Typography className="name" gutterBottom variant="h5" component="h2" style={{marginLeft : "5%"}}>
           	{this.props.title}
           </Typography>
           <img src={this.props.image} width="360" height="300"/>

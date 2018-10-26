@@ -12,11 +12,23 @@ import Spac from '../../assets/SPAC.jpg';
 import Patten from '../../assets/Patten.jpg';
 import Blom from '../../assets/Blom.jpg';
 
+import { createMuiTheme } from '@material-ui/core/styles';
+import purple from '@material-ui/core/colors/purple';
+
 import {
     load_main
 } from '../../ducks/main'
 
 import './styles.css';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: purple,
+    secondary: {
+      main: '#f44336',
+    },
+  },
+});
 
 class MainComponent extends Component {
     showGyms() {
@@ -33,7 +45,7 @@ class MainComponent extends Component {
 
         return (
             <div>
-                <AppBar className="header" position="static" color="default">
+                <AppBar className="header" position="static" style={{backgroundColor: "#4D3245"}}>
                     <Toolbar>
                         <Typography className="header" variant="h6" color="inherit">
                             {this.props.title}
@@ -42,8 +54,6 @@ class MainComponent extends Component {
                 </AppBar>
                 <div><h1> </h1></div>
                 <div className="flex-container"> 
-                    {this.showGyms()}
-                    {this.showGyms()}
                     {this.showGyms()}
                 </div>
             </div>
