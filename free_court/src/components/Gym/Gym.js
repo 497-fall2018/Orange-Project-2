@@ -22,27 +22,7 @@ import IconButton from '@material-ui/core/IconButton';
 
 import './styles.css';
 
-const styles = theme => ({
-  card: {
-    maxWidth: 345,
-  },
-  media: {
-    height: 140,
-  },
-  expand: {
-    transform: 'rotate(0deg)',
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
-    }),
-    marginLeft: 'auto',
-    [theme.breakpoints.up('sm')]: {
-      marginRight: -8,
-    },
-  },
-  expandOpen: {
-    transform: 'rotate(180deg)',
-  },
-});
+
 
 class GymComponent extends Component {
   state = { expanded: false };
