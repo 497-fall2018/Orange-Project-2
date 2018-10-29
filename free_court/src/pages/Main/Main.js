@@ -15,6 +15,13 @@ import Blom from '../../assets/Blom.jpg';
 import { createMuiTheme } from '@material-ui/core/styles';
 import purple from '@material-ui/core/colors/purple';
 
+
+
+
+
+
+
+
 import {
     load_main
 } from '../../ducks/main'
@@ -34,7 +41,7 @@ class MainComponent extends Component {
     showGyms() {
         return _.map(this.props.gyms, (item, index) => {
             return (
-                <GymComponent title={item.name} image={item.pic_url} descrip={item.open} key={index}/>   
+                <GymComponent title={item.name} image={item.pic_url} descrip={item.open} key={index}/>
             )
         })
     }
@@ -50,10 +57,11 @@ class MainComponent extends Component {
                         <Typography className="header" variant="h6" color="inherit">
                             {this.props.title}
                         </Typography>
+
                     </Toolbar>
                 </AppBar>
                 <div><h1> </h1></div>
-                <div className="flex-container"> 
+                <div className="flex-container">
                     {this.showGyms()}
                 </div>
             </div>
