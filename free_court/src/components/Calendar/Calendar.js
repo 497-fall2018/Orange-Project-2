@@ -15,15 +15,14 @@ class CalComponent extends Component {
         //Inner loop to create children\
         children.push(<td> {`${i +5}:00`} </td>)
         children.push(<td style={{
-          width: "%100",
+          width: "70%",
           backgroundColor: "#313131"}}>
         </td>)
-
         //children.push(<td></td>)
         //Create the parent and add the children
         table.push(<tr
           style={{
-          width: "%100"
+          width: "100"
           }}>{children}</tr>)
       }
       return table
@@ -31,19 +30,20 @@ class CalComponent extends Component {
 
   render() {
     return (
-
-      <table style={{
-        width:"100%"
-        // minWidth: "550px",
-        // borderLeft: "solid",
-        // borderColor: "RGBa(61, 61, 61,.3)",
-        // borderTopRightRadius: "20px",
-        // borderTopLeftRadius: "20px",
-        // borderBottomRightRadius: "10px",
-        // borderBottomLeftRadius: "10px"
-      }}>
-        {this.createTable()}
-      </table>
+      <div className="center">
+        <table style={{
+          width:"500"
+          // minWidth: "550px",
+          // borderLeft: "solid",
+          // borderColor: "RGBa(61, 61, 61,.3)",
+          // borderTopRightRadius: "20px",
+          // borderTopLeftRadius: "20px",
+          // borderBottomRightRadius: "10px",
+          // borderBottomLeftRadius: "10px"
+        }}>
+          {this.createTable()}
+        </table>
+      </div>
 
     );
   }

@@ -35,7 +35,7 @@ class MainComponent extends Component {
                 <div className="flex-container">
                     {this.showGyms()}
                 </div>
-                <CalComponent/>
+                <CalComponent className="center"/>
             </div>
         );
     }
