@@ -10,14 +10,25 @@ class CalComponent extends Component {
   createTable = () => {
       let table = []
       // Outer loop to create parent
-      for (let i = 0; i < 9; i++) {
+      for (let i = 5; i < 25; i++) {
         let children = []
         //Inner loop to create children\
-        children.push(<td> {`${i +5}:00`} </td>)
-        children.push(<td style={{
-          width: "70%",
-          backgroundColor: "#313131"}}>
-        </td>)
+
+        if (this.props.sched[i] == "Closed"){
+
+          children.push(<td> {`${i}:00`} </td>)
+          children.push(<td style={{
+            width: "70%",
+            backgroundColor: "#ff0000"}}>
+          </td>)
+        }
+        else {
+          children.push(<td> {`${i}:00`} </td>)
+          children.push(<td style={{
+            width: "70%",
+            backgroundColor: "#00ff00"}}>
+          </td>)
+        }
         //children.push(<td></td>)
         //Create the parent and add the children
         table.push(<tr

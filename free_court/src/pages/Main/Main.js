@@ -42,7 +42,7 @@ class MainComponent extends Component {
     showGyms() {
         return _.map(this.props.gyms, (item, index) => {
             return (
-                <GymComponent title={item.name} image={item.pic_url} descrip={item.open} key={index}/>
+                <GymComponent title={item.name} image={item.pic_url} descrip={item.open} sched={item.schedule} key={index}/>
             )
         })
     }
@@ -53,11 +53,6 @@ class MainComponent extends Component {
 
         return (
             <div>
-<<<<<<< HEAD
-                <h1 className="header">
-                    {this.props.title}
-                </h1>
-=======
                 <AppBar className="header" position="static" style={{backgroundColor: "#4D3245"}}>
                     <Toolbar>
                         <Typography className="header" variant="h6" color="inherit">
@@ -67,11 +62,9 @@ class MainComponent extends Component {
                     </Toolbar>
                 </AppBar>
                 <div><h1> </h1></div>
->>>>>>> 7291f438a051f5f67cc38209605b81931312b2ac
                 <div className="flex-container">
                     {this.showGyms()}
                 </div>
-                <CalComponent className="center"/>
             </div>
         );
     }
