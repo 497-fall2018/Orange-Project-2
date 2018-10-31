@@ -53,8 +53,8 @@ class GymComponent extends Component {
     const { classes } = this.props;
     return (
       <div >
-        <Card elevation={1} style={{backgroundColor:"#FFFCFA",}} >>
-          <Typography className="name" gutterBottom variant="h5" component="h2" style={{marginLeft : "5%"}}>
+        <Card elevation={1} style={{backgroundColor:"#FFFCFA",}} >
+          <Typography className="name" gutterBottom variant="h5" component="h2" style={{marginLeft : "5%", marginTop: "2%"}}>
                 {this.props.title}
           </Typography>
           <img src={this.props.image} width="360" height="300"/>
@@ -68,8 +68,7 @@ class GymComponent extends Component {
           <Collapse in={this.state.expanded} timeout="auto" unmountOnExit >
             <CardContent>
               <Typography paragraph>
-                Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10
-                minutes.
+                Heat 1/2 cup of the broth in a pot until simmering.
               </Typography>
             </CardContent>
           </Collapse>
