@@ -31,6 +31,7 @@ class GymComponent extends Component {
   };
   render() {
     const { classes } = this.props;
+    var datetime = new Date()
     return (
       <div >
         <Card elevation={1} style={{backgroundColor:"#FFFCFA",}} >
@@ -38,7 +39,7 @@ class GymComponent extends Component {
                 {this.props.title}
           </Typography>
           <img src={this.props.image} width="360" height="300"/>
-          <h2 className="status"> {this.props.descrip} </h2>
+          <h2 className="status"> {this.props.sched[datetime.getHours()]} </h2>
           <Button size="small" color="primary"
             onClick={this.handleExpandClick}
             aria-expanded={this.state.expanded}
@@ -47,8 +48,7 @@ class GymComponent extends Component {
           </Button>
           <Collapse in={this.state.expanded} timeout="auto" unmountOnExit >
             <CardContent>
-            <CalComponent sched={this.props.sched}/> 
-
+              <CalComponent sched={this.props.sched}/> 
             </CardContent>
           </Collapse>
         </Card>
