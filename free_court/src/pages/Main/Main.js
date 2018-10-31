@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { GymComponent } from '../../components/Gym';
+import { CalComponent } from '../../components/Calendar';
 import _ from 'lodash';
 
 import AppBar from '@material-ui/core/AppBar';
@@ -41,7 +42,7 @@ class MainComponent extends Component {
     showGyms() {
         return _.map(this.props.gyms, (item, index) => {
             return (
-                <GymComponent title={item.name} image={item.pic_url} descrip={item.open} key={index}/>
+                <GymComponent title={item.name} image={item.pic_url} descrip={item.open} sched={item.schedule} key={index}/>
             )
         })
     }

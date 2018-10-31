@@ -14,7 +14,7 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
-
+import { CalComponent } from '../Calendar';
 
 
 
@@ -47,9 +47,8 @@ class GymComponent extends Component {
           </Button>
           <Collapse in={this.state.expanded} timeout="auto" unmountOnExit >
             <CardContent>
-              <Typography paragraph>
-                Heat 1/2 cup of the broth in a pot until simmering.
-              </Typography>
+            <CalComponent sched={this.props.sched}/> 
+
             </CardContent>
           </Collapse>
         </Card>
