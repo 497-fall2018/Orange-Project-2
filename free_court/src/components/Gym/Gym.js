@@ -14,6 +14,7 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
+  
 
 
 
@@ -65,6 +66,15 @@ class GymComponent extends Component {
             aria-label="Show more">
                 See Schedule
           </Button>
+
+
+          <Button size="small" color="primary"
+            onClick={this.handleExpandClick}
+            aria-label="Show more">
+                Notify me when available
+          </Button>
+
+
           <Collapse in={this.state.expanded} timeout="auto" unmountOnExit >
             <CardContent>
               <Typography paragraph>

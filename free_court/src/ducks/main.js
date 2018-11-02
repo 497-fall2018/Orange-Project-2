@@ -8,7 +8,7 @@ const mainAPIRoot = `${APIConfig.apiroot}`;
 export const LOAD_MAIN = 'free_court/main/LOAD_MAIN';
 export const LOAD_MAIN_SUCCESS = 'free_court/main/LOAD_MAIN_SUCCESS';
 export const LOAD_MAIN_FAILURE = 'free_court/main/LOAD_MAIN_FAILURE';
-
+export const TOGGLE_MODAL = 'free_court/main/TOGGLE_MODAL';
 
 const INITIAL_STATE = {
     availability: {},
@@ -36,6 +36,12 @@ export default function reducer(state = INITIAL_STATE, action) {
                 ...state,
                 error_message: action.payload
             }
+        case TOGGLE_MODAL:
+            return {
+                ...state,
+                modalIsOpen: true
+            }
+
         default:
             return {
                 ...state
@@ -64,9 +70,19 @@ export const load_main_success = (dispatch, response) => {
     });
 }
 
+
+
 export const load_main_failure = (dispatch, error) => {
     dispatch({
         type: LOAD_MAIN_FAILURE,
         payload: error.data
+    });
+}
+
+export const openModal = (dispatch, response) => {
+    dispatch({
+        type: TOGGLE_MODAL,
+        modalIsOpen: true,
+
     });
 }
