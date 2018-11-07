@@ -1,30 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { GymComponent } from '../../components/Gym';
-import { CalComponent } from '../../components/Calendar';
 import _ from 'lodash';
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
-
-import Spac from '../../assets/SPAC.jpg';
-import Patten from '../../assets/Patten.jpg';
-import Blom from '../../assets/Blom.jpg';
 
 import { createMuiTheme } from '@material-ui/core/styles';
 import purple from '@material-ui/core/colors/purple';
 
-
-
-
-
-
-
-
 import {
-    load_main
+    thunk_load_main,
+    thunk_request_update,
 } from '../../ducks/main'
 
 import './styles.css';
@@ -42,7 +30,7 @@ class MainComponent extends Component {
     showGyms() {
         return _.map(this.props.gyms, (item, index) => {
             return (
-                <GymComponent title={item.name} image={item.pic_url} descrip={item.open} sched={item.schedule} key={index}/>
+                <GymComponent data={item} key={index} request_update={this.props.request_update}/>
             )
         })
     }
@@ -58,7 +46,6 @@ class MainComponent extends Component {
                         <Typography className="header" variant="h6" color="inherit">
                             {this.props.title}
                         </Typography>
-
                     </Toolbar>
                 </AppBar>
                 <div><h1> </h1></div>
@@ -83,7 +70,16 @@ const mapStateToProps = (state, ownProps) => {
     };
 };
 
+const mapDispatchToProps = dispatch => {
+    return {
+        request_update: () => {
+            dispatch(thunk_request_update())
+        },
+        load_main: () => {
+            dispatch(thunk_load_main())
+        },
+    }
+}
+
 // imported actions go here
-export const Main = connect(mapStateToProps, {
-    load_main,
-})(MainComponent);
+export const Main = connect(mapStateToProps, mapDispatchToProps)(MainComponent);
