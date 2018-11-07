@@ -69,7 +69,7 @@ class GymComponent extends Component {
 
 
           <Button size="small" color="primary"
-            onClick={this.handleExpandClick}
+            onClick={this.props.toggle_modal}
             aria-label="Show more">
                 Notify me when available
           </Button>
