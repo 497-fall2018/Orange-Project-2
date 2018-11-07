@@ -6,11 +6,36 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 
 import Collapse from '@material-ui/core/Collapse';
-import { CalComponent } from '../Calendar';
+
+import {
+  CalComponent
+} from '../Calendar';
+
+
 
 import './styles.css';
 
-
+const styles = theme => ({
+  card: {
+    maxWidth: 345,
+  },
+  media: {
+    height: 140,
+  },
+  expand: {
+    transform: 'rotate(0deg)',
+    transition: theme.transitions.create('transform', {
+      duration: theme.transitions.duration.shortest,
+    }),
+    marginLeft: 'auto',
+    [theme.breakpoints.up('sm')]: {
+      marginRight: -8,
+    },
+  },
+  expandOpen: {
+    transform: 'rotate(180deg)',
+  },
+});
 
 class GymComponent extends Component {
   state = { expanded: false };
@@ -41,6 +66,15 @@ class GymComponent extends Component {
             aria-label="Show more">
                 See Schedule
           </Button>
+
+
+          <Button size="small" color="primary"
+            onClick={() => this.props.toggle_modal(data.name)}
+            aria-label="Show more">
+                Notify me when available
+          </Button>
+
+
           <Collapse in={this.state.expanded} timeout="auto" unmountOnExit >
             <CardContent>
               <CalComponent sched={data.schedule}/> 
