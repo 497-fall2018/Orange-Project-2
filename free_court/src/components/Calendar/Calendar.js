@@ -11,8 +11,6 @@ class CalComponent extends Component {
   createTable = () => {
       return (
           _.map(this.props.sched, (item, index) => {
-              console.log(item);
-              console.log(index);
               let color = ""
 
               if (item == "Closed"){
