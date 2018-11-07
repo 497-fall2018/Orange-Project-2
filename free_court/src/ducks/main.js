@@ -11,8 +11,14 @@ export const SUBSCRIBE_FAILURE = 'free_court/main/SUBSCRIBE_FAILURE';
 export const LOAD_MAIN = 'free_court/main/LOAD_MAIN';
 export const LOAD_MAIN_SUCCESS = 'free_court/main/LOAD_MAIN_SUCCESS';
 export const LOAD_MAIN_FAILURE = 'free_court/main/LOAD_MAIN_FAILURE';
+<<<<<<< HEAD
 export const TOGGLE_MODAL = 'free_court/main/TOGGLE_MODAL';
 export const PHONE_EDIT = 'free_court/main/PHONE_EDIT';
+=======
+export const REQUEST_UPDATE = 'free_court/main/REQUEST_UPDATE';
+export const REQUEST_UPDATE_SUCCESS = 'free_court/main/REQUEST_UPDATE_SUCCESS';
+export const REQUEST_UPDATE_FAILURE = 'free_court/main/REQUEST_UPDATE_FAILURE';
+>>>>>>> master
 
 const INITIAL_STATE = {
     availability: {},
@@ -24,9 +30,13 @@ const INITIAL_STATE = {
         phone: "hi",
         pic_url: "",
     }],
+<<<<<<< HEAD
     is_modal_open: false,
     phone_number: "",
     current_gym: "",
+=======
+    loading: false,
+>>>>>>> master
 };
 
 //Reducers
@@ -43,6 +53,7 @@ export default function reducer(state = INITIAL_STATE, action) {
                 ...state,
                 error_message: action.payload
             }
+<<<<<<< HEAD
         case TOGGLE_MODAL:
             return {
                 ...state,
@@ -52,6 +63,23 @@ export default function reducer(state = INITIAL_STATE, action) {
             return {
                 ...state,
                 phone_number: action.payload
+=======
+        case REQUEST_UPDATE:
+        case REQUEST_UPDATE_SUCCESS:
+            return {
+                ...state,
+                loading: true
+            }
+        case REQUEST_UPDATE_FAILURE:
+            return {
+                ...state,
+                error_message: action.payload
+            }
+        case REQUEST_UPDATE_FAILURE:
+            return {
+                ...state,
+                error_message: action.payload
+>>>>>>> master
             }
         default:
             return {
@@ -86,31 +114,45 @@ export function thunk_subscribe () {
     }
 }
 
-//Action Creators
-export const load_main = () => {
-    const url = `${mainAPIRoot}/v1/gyms`;
-    return (dispatch) => {
-        dispatch({
-            type: LOAD_MAIN
-        });
-        axios.get(url)
-          .then((response) => load_main_success(dispatch, response))
-          .catch((error) => load_main_failure(dispatch, error))
+// Thunk
+export function thunk_request_update () {
+    return (dispatch, getState) => {
+        dispatch({type: REQUEST_UPDATE});
+        const url = APIConfig.apiroot + '/v1/update';
+        return axios.get(url)
+        .then((response) => {
+            dispatch({
+                type: REQUEST_UPDATE_SUCCESS,
+                payload: response.data.response 
+            })
+        })
+        .catch((error) => {
+            dispatch({
+                type: REQUEST_UPDATE_FAILURE,
+                payload: error.data.response.error_message
+            })
+        })
     }
 }
 
-export const load_main_success = (dispatch, response) => {
-    dispatch({
-        type: LOAD_MAIN_SUCCESS,
-        payload: response.data.response,
-    });
-}
-
-export const load_main_failure = (dispatch, error) => {
-    dispatch({
-        type: LOAD_MAIN_FAILURE,
-        payload: error.data
-    });
+export function thunk_load_main () {
+    return (dispatch, getState) => {
+        dispatch({type: LOAD_MAIN});
+        const url = APIConfig.apiroot + '/v1/gyms';
+        return axios.get(url)
+        .then((response) => {
+            dispatch({
+                type: LOAD_MAIN_SUCCESS,
+                payload: response.data.response
+            })
+        })
+        .catch((error) => {
+            dispatch({
+                type: LOAD_MAIN_SUCCESS,
+                payload: "Error. Try reopening the app"
+            })
+        })
+    }
 }
 
 export const toggle_modal = () => {

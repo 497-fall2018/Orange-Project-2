@@ -9,28 +9,29 @@ import _ from 'lodash';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+<<<<<<< HEAD
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 
 import Spac from '../../assets/SPAC.jpg';
 import Patten from '../../assets/Patten.jpg';
 import Blom from '../../assets/Blom.jpg';
+=======
+>>>>>>> master
 
 import { createMuiTheme } from '@material-ui/core/styles';
 import purple from '@material-ui/core/colors/purple';
 
-
-
-
-
-
-
-
 import {
+<<<<<<< HEAD
     load_main,
     toggle_modal,
     phone_edit,
     thunk_subscribe,
+=======
+    thunk_load_main,
+    thunk_request_update,
+>>>>>>> master
 } from '../../ducks/main'
 
 import './styles.css';
@@ -48,7 +49,11 @@ class MainComponent extends Component {
     showGyms() {
         return _.map(this.props.gyms, (item, index) => {
             return (
+<<<<<<< HEAD
                 <GymComponent title={item.name} image={item.pic_url} descrip={item.open} key={index} toggle_modal={this.props.toggle_modal}/>
+=======
+                <GymComponent data={item} key={index} request_update={this.props.request_update}/>
+>>>>>>> master
             )
         })
     }
@@ -108,10 +113,16 @@ const mapStateToProps = (state, ownProps) => {
     };
 };
 
+const mapDispatchToProps = dispatch => {
+    return {
+        request_update: () => {
+            dispatch(thunk_request_update())
+        },
+        load_main: () => {
+            dispatch(thunk_load_main())
+        },
+    }
+}
+
 // imported actions go here
-export const Main = connect(mapStateToProps, {
-    load_main,
-    toggle_modal,
-    phone_edit,
-    subscribe
-})(MainComponent);
+export const Main = connect(mapStateToProps, mapDispatchToProps)(MainComponent);
