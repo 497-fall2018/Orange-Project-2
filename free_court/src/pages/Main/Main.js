@@ -9,29 +9,17 @@ import _ from 'lodash';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-<<<<<<< HEAD
 import TextField from '@material-ui/core/TextField';
-import Grid from '@material-ui/core/Grid';
-
-import Spac from '../../assets/SPAC.jpg';
-import Patten from '../../assets/Patten.jpg';
-import Blom from '../../assets/Blom.jpg';
-=======
->>>>>>> master
 
 import { createMuiTheme } from '@material-ui/core/styles';
 import purple from '@material-ui/core/colors/purple';
 
 import {
-<<<<<<< HEAD
-    load_main,
     toggle_modal,
     phone_edit,
     thunk_subscribe,
-=======
     thunk_load_main,
     thunk_request_update,
->>>>>>> master
 } from '../../ducks/main'
 
 import './styles.css';
@@ -49,11 +37,7 @@ class MainComponent extends Component {
     showGyms() {
         return _.map(this.props.gyms, (item, index) => {
             return (
-<<<<<<< HEAD
-                <GymComponent title={item.name} image={item.pic_url} descrip={item.open} key={index} toggle_modal={this.props.toggle_modal}/>
-=======
-                <GymComponent data={item} key={index} request_update={this.props.request_update}/>
->>>>>>> master
+                <GymComponent data={item} key={index} request_update={this.props.request_update} toggle_modal={this.props.toggle_modal} />
             )
         })
     }
@@ -80,6 +64,9 @@ class MainComponent extends Component {
                     onRequestClose={() => {}}
                     contentLabel="Example Modal"
                 >
+                    <div>
+                        {this.props.current_gym}
+                    </div>
                     <TextField
                         id="phone-number"
                         label="Phone Number"
@@ -87,8 +74,8 @@ class MainComponent extends Component {
                         onChange={(event) => {this.handlePhoneInput(event.target.value)}}
                         margin="normal"
                     />
-                    <button onClick={this.props.toggle_modal}>close</button>
-                    <button onClick={this.props.thunk_subscribe}>Subscribe</button>
+                    <button onClick={() => this.props.toggle_modal("")}>close</button>
+                    <button onClick={this.props.subscribe}>Subscribe</button>
                 </Modal>
                 <div className="flex-container">
                     {this.showGyms()}
@@ -102,9 +89,10 @@ export { MainComponent };
 
 const mapStateToProps = (state, ownProps) => {
     const { main } = state;
-    const { error_message, gyms, title, is_modal_open, phone_number } = main;
+    const { current_gym, error_message, gyms, title, is_modal_open, phone_number } = main;
     return {
       ...ownProps,
+      current_gym,
       is_modal_open,
       title,
       gyms,
@@ -121,6 +109,15 @@ const mapDispatchToProps = dispatch => {
         load_main: () => {
             dispatch(thunk_load_main())
         },
+        subscribe: () => {
+            dispatch(thunk_subscribe())
+        },
+        phone_edit: (val) => {
+            dispatch(phone_edit(val))
+        },
+        toggle_modal: (gym) => {
+            dispatch(toggle_modal(gym))
+        }
     }
 }
 

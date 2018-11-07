@@ -11,14 +11,11 @@ export const SUBSCRIBE_FAILURE = 'free_court/main/SUBSCRIBE_FAILURE';
 export const LOAD_MAIN = 'free_court/main/LOAD_MAIN';
 export const LOAD_MAIN_SUCCESS = 'free_court/main/LOAD_MAIN_SUCCESS';
 export const LOAD_MAIN_FAILURE = 'free_court/main/LOAD_MAIN_FAILURE';
-<<<<<<< HEAD
 export const TOGGLE_MODAL = 'free_court/main/TOGGLE_MODAL';
 export const PHONE_EDIT = 'free_court/main/PHONE_EDIT';
-=======
 export const REQUEST_UPDATE = 'free_court/main/REQUEST_UPDATE';
 export const REQUEST_UPDATE_SUCCESS = 'free_court/main/REQUEST_UPDATE_SUCCESS';
 export const REQUEST_UPDATE_FAILURE = 'free_court/main/REQUEST_UPDATE_FAILURE';
->>>>>>> master
 
 const INITIAL_STATE = {
     availability: {},
@@ -30,13 +27,10 @@ const INITIAL_STATE = {
         phone: "hi",
         pic_url: "",
     }],
-<<<<<<< HEAD
     is_modal_open: false,
     phone_number: "",
     current_gym: "",
-=======
     loading: false,
->>>>>>> master
 };
 
 //Reducers
@@ -53,17 +47,17 @@ export default function reducer(state = INITIAL_STATE, action) {
                 ...state,
                 error_message: action.payload
             }
-<<<<<<< HEAD
         case TOGGLE_MODAL:
             return {
                 ...state,
-                is_modal_open: !state.is_modal_open
+                is_modal_open: !state.is_modal_open,
+                current_gym: action.payload
             }
         case PHONE_EDIT:
             return {
                 ...state,
                 phone_number: action.payload
-=======
+            }
         case REQUEST_UPDATE:
         case REQUEST_UPDATE_SUCCESS:
             return {
@@ -79,7 +73,6 @@ export default function reducer(state = INITIAL_STATE, action) {
             return {
                 ...state,
                 error_message: action.payload
->>>>>>> master
             }
         default:
             return {
@@ -114,7 +107,6 @@ export function thunk_subscribe () {
     }
 }
 
-// Thunk
 export function thunk_request_update () {
     return (dispatch, getState) => {
         dispatch({type: REQUEST_UPDATE});
@@ -155,10 +147,11 @@ export function thunk_load_main () {
     }
 }
 
-export const toggle_modal = () => {
+export const toggle_modal = (gym) => {
     return (dispatch) => {
         dispatch({
             type: TOGGLE_MODAL,
+            payload: gym
         })
     }
 }
