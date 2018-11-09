@@ -103,8 +103,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        request_update: () => {
-            dispatch(thunk_request_update())
+        request_update: (name) => {
+            dispatch(thunk_request_update(name))
         },
         load_main: () => {
             dispatch(thunk_load_main())
