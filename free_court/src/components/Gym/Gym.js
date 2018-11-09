@@ -56,7 +56,7 @@ class GymComponent extends Component {
           <Button 
             size="small" 
             color="primary"
-            onClick={() => this.props.request_update(data['id'])}
+            onClick={() => this.props.request_update(data.name)}
           >  
             Request Update
           </Button>

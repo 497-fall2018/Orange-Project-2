@@ -107,10 +107,10 @@ export function thunk_subscribe () {
     }
 }
 
-export function thunk_request_update () {
+export function thunk_request_update (name) {
     return (dispatch, getState) => {
         dispatch({type: REQUEST_UPDATE});
-        const url = APIConfig.apiroot + '/v1/update';
+        const url = APIConfig.apiroot + '/v1/update/' + name;
         return axios.get(url)
         .then((response) => {
             dispatch({
