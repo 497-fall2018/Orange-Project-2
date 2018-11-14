@@ -56,7 +56,7 @@ class GymComponent extends Component {
             <img style={{display: "block", margin:"auto"}} src={data.pic_url} width="360" height="300"/>
           </div>
           <h2 className="status"> {data.status} </h2>
-          <h4 className="status"> {data.date_updated} </h4>
+          <h4 className="status"> last updated: {data.date_updated} </h4>
           <Button 
             size="small" 
             color="primary"
