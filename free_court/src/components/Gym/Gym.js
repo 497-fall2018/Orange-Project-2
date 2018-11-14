@@ -51,8 +51,11 @@ class GymComponent extends Component {
           <Typography className="name" gutterBottom variant="h5" component="h2" style={{marginLeft : "5%", marginTop: "2%"}}>
                 {data.name}
           </Typography>
-          <img src={data.pic_url} width="360" height="300"/>
+          <div style={{display: "block", margin:"auto"}}>
+            <img style={{display: "block", margin:"auto"}} src={data.pic_url} width="360" height="300"/>
+          </div>
           <h2 className="status"> {data.status} </h2>
+          <h4 className="status"> last updated: {data.date_updated} </h4>
           <Button 
             size="small" 
             color="primary"
