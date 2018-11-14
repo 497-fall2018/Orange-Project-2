@@ -45,14 +45,18 @@ class GymComponent extends Component {
   render() {
     var datetime = new Date();
     var data = this.props.data;
+    console.log(data);
     return (
       <div >
         <Card elevation={1} style={{backgroundColor:"#FFFCFA",}} >
           <Typography className="name" gutterBottom variant="h5" component="h2" style={{marginLeft : "5%", marginTop: "2%"}}>
                 {data.name}
           </Typography>
-          <img src={data.pic_url} width="360" height="300"/>
+          <div style={{display: "block", margin:"auto"}}>
+            <img style={{display: "block", margin:"auto"}} src={data.pic_url} width="360" height="300"/>
+          </div>
           <h2 className="status"> {data.status} </h2>
+          <h4 className="status"> {data.date_updated} </h4>
           <Button 
             size="small" 
             color="primary"
