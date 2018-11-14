@@ -96,8 +96,8 @@ export default function reducer(state = INITIAL_STATE, action) {
 // Thunk
 export function thunk_subscribe () {
     return (dispatch, getState) => {
-        dispatch({type: SUBSCRIBE});
         var main = getState()['main']
+        dispatch({type: SUBSCRIBE});
 
         const url = APIConfig.apiroot + '/v1/subscribe';
         return axios.post(url, {
@@ -169,7 +169,7 @@ export const toggle_modal = (gym) => {
 }
 
 export const phone_edit = (value) => {
-     return (dispatch) => {
+      return (dispatch) => {
         dispatch({
             type: PHONE_EDIT, 
             payload: value
