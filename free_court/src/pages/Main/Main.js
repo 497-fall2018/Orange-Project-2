@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { GymComponent } from '../../components/Gym';
 import Modal from 'react-modal';
+import Button from '@material-ui/core/Button';
+
 
 
 import _ from 'lodash';
@@ -62,21 +64,29 @@ class MainComponent extends Component {
                 <Modal
                     isOpen={this.props.is_modal_open}
                     onRequestClose={() => {}}
-                    contentLabel="Example Modal"
+                    contentLabel="Subscribe Modal"
                 >
-                    <div>
-                        {this.props.current_gym}
+                    <div style={{display: "flex", flexDirection:"column", justifyContent: "center", alignContent: "center"}}>
+                        <h1 style={{display: "block", margin: "auto"}}>
+                            {this.props.current_gym}
+                        </h1>
+                        <h3 style={{display: "block", margin: "auto", marginTop: "50px"}}>
+                            Subscribe to get notified when there are less people at the court!
+                        </h3>
+                        <TextField
+                            id="phone-number"
+                            label="Phone Number"
+                            value={this.props.phone_number}
+                            onChange={(event) => {this.handlePhoneInput(event.target.value)}}
+                            margin="normal"
+                            style={{marginTop: "100px"}}
+                        />
+                        <div style={{display: "flex", justifyContent: "center", marginTop: "30vh"}}>
+                            <Button onClick={() => this.props.toggle_modal("")}>close</Button>
+                            <Button onClick={this.props.subscribe}>Subscribe</Button>
+                        </div>
                     </div>
-                    <TextField
-                        id="phone-number"
-                        label="Phone Number"
-                        value={this.props.phone_number}
-                        onChange={(event) => {this.handlePhoneInput(event.target.value)}}
-                        margin="normal"
-                    />
-                    <button onClick={() => this.props.toggle_modal("")}>close</button>
-                    <button onClick={this.props.subscribe}>Subscribe</button>
-                </Modal>
+               </Modal>
                 <div className="flex-container">
                     {this.showGyms()}
                 </div>

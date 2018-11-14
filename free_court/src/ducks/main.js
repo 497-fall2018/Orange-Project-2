@@ -74,6 +74,18 @@ export default function reducer(state = INITIAL_STATE, action) {
                 ...state,
                 error_message: action.payload
             }
+        case SUBSCRIBE:
+        case SUBSCRIBE_SUCCESS:
+            return {
+                ...state,
+                is_modal_open: false,
+                phone_number: "",
+            }
+        case SUBSCRIBE_FAILURE:
+            return {
+                ...state,
+                error_message: action.payload
+            }
         default:
             return {
                 ...state
