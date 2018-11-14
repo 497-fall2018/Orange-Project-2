@@ -45,7 +45,6 @@ class GymComponent extends Component {
   render() {
     var datetime = new Date();
     var data = this.props.data;
-    console.log(data);
     return (
       <div >
         <Card elevation={1} style={{backgroundColor:"#FFFCFA",}} >
