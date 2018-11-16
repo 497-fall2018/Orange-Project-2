@@ -60,7 +60,24 @@ class MainComponent extends Component {
                         </Typography>
                     </Toolbar>
                 </AppBar>
-                <div><h1> </h1></div>
+                    {
+                    this.props.error_message !== "" ?
+                    <div style={{display: "flex", flexDirection:"column", justifyContent: "center", alignContent: "center", marginTop: "30px", marginBottom: "30px"}}>
+                    <h1 style={{color: 'purple', margin: 'auto'}}>
+                        {this.props.error_message}
+                    </h1>
+                    </div>
+                    : 
+                    <div style={{display: "flex", flexDirection:"column", justifyContent: "center", alignContent: "center", marginTop: "30px", marginBottom: "30px"}}>
+                    <h1 style={{margin: 'auto'}}>
+                        Welcome! 
+                    </h1>
+                    <h1 style={{margin: 'auto'}}>
+                        We provide real time information regarding basketball courts in Northwestern Gyms!
+                    </h1>
+                    </div>
+                    
+                    }
                 <Modal
                     isOpen={this.props.is_modal_open}
                     onRequestClose={() => {}}

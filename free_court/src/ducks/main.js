@@ -22,10 +22,6 @@ const INITIAL_STATE = {
     error_message: "",
     title: "Courts n' Shorts",
     gyms: [{
-        name: "SPAC",
-        schedule: "Full",
-        phone: "hi",
-        pic_url: "",
     }],
     is_modal_open: false,
     phone_number: "",
@@ -37,6 +33,10 @@ const INITIAL_STATE = {
 export default function reducer(state = INITIAL_STATE, action) {
     switch (action.type){
         case LOAD_MAIN:
+            return {
+                ...state,
+                error_message: "",
+            }
         case LOAD_MAIN_SUCCESS:
             return {
                 ...state,
@@ -59,15 +59,14 @@ export default function reducer(state = INITIAL_STATE, action) {
                 phone_number: action.payload
             }
         case REQUEST_UPDATE:
+            return {
+                ...state,
+                error_message: "",
+            }
         case REQUEST_UPDATE_SUCCESS:
             return {
                 ...state,
-                loading: true
-            }
-        case REQUEST_UPDATE_FAILURE:
-            return {
-                ...state,
-                error_message: action.payload
+                error_message: "Successfully requested an update! It takes less than a minute, so refresh soon!"
             }
         case REQUEST_UPDATE_FAILURE:
             return {
@@ -75,16 +74,23 @@ export default function reducer(state = INITIAL_STATE, action) {
                 error_message: action.payload
             }
         case SUBSCRIBE:
+            return {
+                ...state,
+                error_message: "",
+            }
         case SUBSCRIBE_SUCCESS:
             return {
                 ...state,
                 is_modal_open: false,
                 phone_number: "",
+                error_message: "Successfully Subscribed!"
             }
         case SUBSCRIBE_FAILURE:
             return {
                 ...state,
-                error_message: action.payload
+                error_message: action.payload,
+                is_modal_open: false,
+                phone_number: "",
             }
         default:
             return {
@@ -113,7 +119,7 @@ export function thunk_subscribe () {
         .catch((error) => {
             dispatch({
                 type: SUBSCRIBE_FAILURE,
-                payload: error.data.response.error_message
+                payload: "You are already subscribed to " + main['current_gym']
             })
         })
     }
